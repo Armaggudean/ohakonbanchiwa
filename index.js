@@ -47,7 +47,7 @@ client.on("ready", async () => {
         } catch (error) {
             console.error(error);
         }
-    log(`${client.user.username} Aktif Edildi!`);
+    log(`${client.user.username} Aktif!`);
 })
 
 //event-handler
