@@ -7,6 +7,6 @@ module.exports = {
     .setDescription("Pong!"),
     // if you want to improve command: https://discordjs.guide/slash-commands/advanced-creation.html
     run: async (client, interaction) => {
-      interaction.reply(`**\`\`\`asciidoc\nLatency :: ${Math.round(new Date() - interaction.createTimestamp)}ms \nWebsocket :: ${client.ping.ws}ms\n\`\`\`**`)
+      interaction.reply(`**\`\`\`asciidoc\nLatency :: ${Math.round(new Date() - interaction.createTimestamp)}ms \nWebsocket :: ${client.ws.ping}ms\n\`\`\`**`)
     }
  };
