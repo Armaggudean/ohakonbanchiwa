@@ -5,6 +5,6 @@ module.exports = {
     aliases: ["pong"],
     cooldown: 5000,//1 sec = 1000 ms / 0 = no cd.
     run: async (client, message, args) => {
-      message.reply(`**\`\`\`asciidoc\nLatency :: ${Math.round(new Date() - message.createTimestamp)}ms \nWebsocket :: ${client.ping.ws}ms\n\`\`\`**`)
+      message.reply(`**\`\`\`asciidoc\nLatency :: ${new Date - message.createdTimestamp}ms \nWebsocket :: ${client.ws.ping}ms\n\`\`\`**`)
     }
  };

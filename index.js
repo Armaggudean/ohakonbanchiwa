@@ -12,6 +12,7 @@ let token = process.env.token;
 client.commands = new Collection()
 client.slashcommands = new Collection()
 client.commandaliases = new Collection()
+client.util = require('./util')
 
 const rest = new REST({ version: '10' }).setToken(token);
 
@@ -47,7 +48,7 @@ client.on("ready", async () => {
         } catch (error) {
             console.error(error);
         }
-    log(`${client.user.username} Aktif Edildi!`);
+    log(`${client.user.username} Aktif!`);
 })
 
 //event-handler
@@ -58,6 +59,18 @@ readdirSync('./src/events').forEach(async file => {
 	} else {
 		client.on(event.name, (...args) => event.execute(...args));
 	}
+})
+
+
+
+client.on("messageCreate", msg => {
+
+  if(msg.author.bot) return;
+  if(msg.guild) {
+    if(msg.content.startsWith(`<@${msg.client.user.id}>`) || msg.guild.channels.cache.get('1065073926021062687')) {
+      client.util.handleTalk(msg)
+    }
+  }
 })
 
 //nodejs-events
@@ -73,3 +86,14 @@ process.on("uncaughtExceptionMonitor", e => {
 //
 
 client.login(token)
+
+const express = require('express');
+const app = express();
+
+app.get("/", (request, response) => {
+  response.sendFile(__dirname + "/views/index.html");
+});
+
+const listener = app.listen(5900, () => {
+  console.log("Your app on port 69 sus");
+});
