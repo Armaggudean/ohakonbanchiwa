@@ -61,13 +61,13 @@ readdirSync('./src/events').forEach(async file => {
 	}
 })
 
-const channs = "1090823940148035694";
+
 
 client.on("messageCreate", msg => {
 
   if(msg.author.bot) return;
   if(msg.guild) {
-    if(msg.content.startsWith(`<@${msg.client.user.id}>`) || (!isNaN(channs) && channs != msg.channel.id)) {
+    if(msg.content.startsWith(`<@${msg.client.user.id}>`) || msg.guild.channels.cache.get('1090823940148035694')) {
       client.util.handleTalk(msg)
     }
   }
