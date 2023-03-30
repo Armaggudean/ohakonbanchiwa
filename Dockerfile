@@ -3,10 +3,10 @@ bashCopy code
 FROM node:18
 
 # Set the working directory in the container
-WORKDIR ../index
+WORKDIR /index
 
 # Copy the application files into the working directory
-COPY . ../index
+COPY . /index
 
 # Install the application dependencies
 RUN npm install
