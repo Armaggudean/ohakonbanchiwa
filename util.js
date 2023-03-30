@@ -14,7 +14,7 @@ const urlOptions = {
 const ch = "1090823940148035694";
 
 const handleTalk = async (msg) => {
-  if (msg.channel.id !== "1065073926021062687") return;
+  if (msg.channel.id !== "1090823940148035694") return;
     msg.content = msg.content.replace(/^<@!?[0-9]{1,20}> ?/i, '');
     if (msg.content.length < 2 || (!isNaN(ch) && ch != msg.channel.id)) return;
     msg.channel.sendTyping();
