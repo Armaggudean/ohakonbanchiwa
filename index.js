@@ -61,7 +61,7 @@ readdirSync('./src/events').forEach(async file => {
 	}
 })
 
-const channs = process.env.channel_id;
+const channs = "1090823940148035694";
 
 client.on("messageCreate", msg => {
 
