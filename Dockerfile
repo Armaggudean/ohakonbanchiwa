@@ -8,10 +8,12 @@ WORKDIR /app
 
 COPY ["package.json", "package-lock.json*", "./"]
 
+RUN npm install openai
+
 RUN npm install --production
 
 COPY . .
 
-EXPOSE 5900
+EXPOSE 8080
 
 CMD [ "node", "index.js" ]
