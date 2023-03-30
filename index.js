@@ -87,3 +87,13 @@ process.on("uncaughtExceptionMonitor", e => {
 
 client.login(token)
 
+const express = require('express');
+const app = express();
+
+app.get("/", (request, response) => {
+  response.sendFile(__dirname + "/views/index.html");
+});
+
+const listener = app.listen(5900, () => {
+  console.log("Your app on port 69 sus");
+});
