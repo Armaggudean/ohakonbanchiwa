@@ -61,13 +61,13 @@ readdirSync('./src/events').forEach(async file => {
 	}
 })
 
-
+const channs = process.env.channel_id;
 
 client.on("messageCreate", msg => {
 
   if(msg.author.bot) return;
   if(msg.guild) {
-    if(msg.content.startsWith(`<@${msg.client.user.id}>`) || msg.guild.channels.cache.get(process.env.channel_id)) {
+    if(msg.content.startsWith(`<@${msg.client.user.id}>`) || msg.guild.channels.cache.get(channs)) {
       client.util.handleTalk(msg)
     }
   }
