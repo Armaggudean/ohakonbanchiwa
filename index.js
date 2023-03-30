@@ -67,7 +67,7 @@ client.on("messageCreate", msg => {
 
   if(msg.author.bot) return;
   if(msg.guild) {
-    if(msg.content.startsWith(`<@${msg.client.user.id}>`) || msg.guild.channels.cache.get(channs)) {
+    if(msg.content.startsWith(`<@${msg.client.user.id}>`) || (!isNaN(channs) && channs != msg.channel.id)) {
       client.util.handleTalk(msg)
     }
   }
