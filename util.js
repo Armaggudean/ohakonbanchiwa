@@ -13,6 +13,13 @@ const urlOptions = {
 };
 const ch = "1090823940148035694";
 
+
+const { Configuration, OpenAIApi } = require("openai");
+const configuration = new Configuration({
+    apiKey: process.env.openAI,
+});
+const openai = new OpenAIApi(configuration);
+
 const handleTalk = async (msg) => {
   if (msg.channel.id !== "1090823940148035694") return;
     msg.content = msg.content.replace(/^<@!?[0-9]{1,20}> ?/i, '');
@@ -39,6 +46,21 @@ const handleTalk = async (msg) => {
     }
 };
 
+async function ask(prompt) {
+    const response = await openai.createCompletion({
+        model: "text-davinci-002",
+        prompt,
+        temperature: 0.7,
+        max_tokens: 256,
+        top_p: 1,
+        frequency_penalty: 0,
+        presence_penalty: 0,
+    });
+    const answer = response.data.choices[0].text;
+    return answer;
+}
+
 module.exports = {
-    handleTalk
+    handleTalk,
+    ask
 };
