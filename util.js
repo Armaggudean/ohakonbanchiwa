@@ -12,12 +12,6 @@ const urlOptions = {
     msg: null
 };
 const ch = "1065073926021062687";
-const handleStatus = (client, status) => {
-    client.user.setStatus(status.state);
-    client.user.setActivity(status.name, {
-        type: status.type
-    });
-};
 
 const handleTalk = async (msg) => {
   if (msg.channel.id !== "1065073926021062687") return;
@@ -46,6 +40,5 @@ const handleTalk = async (msg) => {
 };
 
 module.exports = {
-    handleStatus,
     handleTalk
 };
