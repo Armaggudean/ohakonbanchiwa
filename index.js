@@ -61,14 +61,15 @@ readdirSync('./src/events').forEach(async file => {
 	}
 })
 
-
+const {ask} = require('./util.js');
 
 client.on("messageCreate", msg => {
 
   if(msg.author.bot) return;
   if(msg.guild) {
-    if(msg.content.startsWith(`<@${msg.client.user.id}>`) || msg.guild.channels.cache.get('1065073926021062687')) {
-      client.util.handleTalk(msg)
+    if(msg.content.startsWith(`<@${msg.client.user.id}>`) || msg.guild.channels.cache.get('1090823940148035694')) {
+      const answer = await ask(message.content);
+      message.reply(answer);
     }
   }
 })
