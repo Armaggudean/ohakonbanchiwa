@@ -11,7 +11,7 @@ const urlOptions = {
     uid: null,
     msg: null
 };
-const ch = process.env.channel_id;
+const ch = "1090823940148035694";
 
 const handleTalk = async (msg) => {
   if (msg.channel.id !== "1065073926021062687") return;
