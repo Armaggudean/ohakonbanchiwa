@@ -1,15 +1,17 @@
-bashCopy code
-# Use the official Node.js image as the base image
-FROM node:18
+#Sample Dockerfile for NodeJS Apps
 
-# Set the working directory in the container
-WORKDIR /index
+FROM node:16
 
-# Copy the application files into the working directory
-COPY . /index
+ENV NODE_ENV=production
 
-# Install the application dependencies
-RUN npm install
+WORKDIR /app
 
-# Define the entry point for the container
-CMD ["npm", "start"]
+COPY ["package.json", "package-lock.json*", "./"]
+
+RUN npm install --production
+
+COPY . .
+
+EXPOSE 5900
+
+CMD [ "node", "index.js" ]
