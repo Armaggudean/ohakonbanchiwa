@@ -68,8 +68,7 @@ client.on("messageCreate", msg => {
   if(msg.author.bot) return;
   if(msg.guild) {
     if(msg.content.startsWith(`<@${msg.client.user.id}>`) || msg.guild.channels.cache.get('1090823940148035694')) {
-      const answer = await ask(message.content);
-      message.reply(answer);
+      client.util.handleTalk(msg);
     }
   }
 })
