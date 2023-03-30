@@ -5,7 +5,7 @@ module.exports = {
   data: new SlashCommandBuilder()
     .setName("ping")
     .setDescription("Pong!"),
-    // if you want to improve command: https://discordjs.guide/slash-commands/advanced-creation.html
+    // if you want to improve command go to: https://discordjs.guide/slash-commands/advanced-creation.html
     run: async (client, interaction) => {
 
       interaction.reply(`**\`\`\`asciidoc\nLatency :: ${new Date - interaction.createdTimestamp}ms \nWebsocket :: ${client.ws.ping}ms\n\`\`\`**`)
