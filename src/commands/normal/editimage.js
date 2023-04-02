@@ -8,7 +8,7 @@ module.exports = {
       
       const em = new EmbedBuilder().setImage(args[1]).setColor(args[2] || "#B0FC38");
 
-      message.channel.edit(args[0], { embeds: [em] })
+      message.channel.editMessage(args[0], { embeds: [em] })
       
     }
  };
