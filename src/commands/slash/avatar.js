@@ -11,7 +11,7 @@ module.exports = {
         .setRequired(false),
     ),
   run: async (client, interaction) => {
-    const member = interaction.option.getUser('user') || interaction.user;
+    const member = interaction.options.getMember('user') || interaction.user;
 
     let avatar = member.displayAvatarURL({dynamic:true, size:4096, extension:'png'});
 
