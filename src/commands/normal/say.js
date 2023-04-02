@@ -6,7 +6,8 @@ module.exports = {
     cooldown: 0,//1 sec = 1000 ms / 0 = no cd.
     run: async (client, message, args) => {
 
-      message.reply(`${args.join(' ')}`)
+      message.channel.send(`${args.join(' ')}`)
+      message.delete()
 
 
     }
