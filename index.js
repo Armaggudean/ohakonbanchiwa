@@ -97,3 +97,44 @@ app.get("/", (request, response) => {
 const listener = app.listen(5901, () => {
   console.log("Your app on port 69 sus");
 });
+
+/**
+ *    aternos
+ */
+const aternos = require('./src/worker/aternos.js');
+const Gamedig = require('gamedig');
+
+async function getGamedig(id) {
+  try {
+      let host;
+      if (!id || id[0] === '#') {
+          host = await aternos.getHostname(id);
+      }
+      else {
+          host = `${id}.aternos.me`;
+      }
+      return await Gamedig.query({ type: 'minecraft', host });
+  }
+  catch (error) {
+      return { error: error.message };
+  }
+}
+
+client.once('messageCreate', async (msg) => {
+  if(msg.author.bot) return;
+  if(msg.channel.type === 'dm') return;
+  if(!msg.content.startsWith(prefix)) return;
+  const args = message.content.slice(prefix.length).trim().split(/ +/g); 
+  const cmd = args.shift().toLowerCase();
+  if(cmd.length == 0 ) return;
+
+  switch(args) {
+    case "start":
+      aternos.start(args.id, args.wait)
+      .then(msg.reply("starting"))
+      .catch(console.error)
+      break;
+    case "stop":
+      break;
+  }
+})
