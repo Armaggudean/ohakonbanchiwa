@@ -7,13 +7,9 @@ const moment = require("moment");
 const { REST } = require('@discordjs/rest');
 const { Routes } = require('discord-api-types/v10');
 const { prefix, owner } = require('./src/config');
-const { Player, RepeatMode } = require("discord-music-player");
 
 let TOKEN = process.env.token;
 
-const player = new Player(client, {
-  leaveOnEmpty: true, 
-});
 client.commands = new Collection()
 client.slashcommands = new Collection()
 client.commandaliases = new Collection()
@@ -79,12 +75,8 @@ client.on("messageCreate", msg => {
       client.util.bedakherosin(msg);
     }
   }
-});
-
-client.on('messageCreate', msg => {
-  if(msg.author.bot) return;
-  let guildQueue = client.player.getQueue(message.guild.id);
-})
+}) 
+	  
 
 //nodejs-events
 process.on("unhandledRejection", e => { 
