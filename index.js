@@ -9,7 +9,7 @@ const { Routes } = require('discord-api-types/v10');
 const { prefix, owner } = require('./src/config');
 const { Player, RepeatMode } = require("discord-music-player");
 
-let token = process.env.token;
+let TOKEN = process.env.token;
 
 const player = new Player(client, {
   leaveOnEmpty: true, 
@@ -20,7 +20,7 @@ client.commandaliases = new Collection()
 client.util = require('./util')
 client.player = player;
 
-const rest = new REST({ version: '10' }).setToken(token);
+const rest = new REST({ version: '10' }).setToken(TOKEN);
 
 const log = x => { console.log(`[${moment().format("DD-MM-YYYY HH:mm:ss")}] ${x}`) };
 
@@ -98,7 +98,7 @@ process.on("uncaughtExceptionMonitor", e => {
  })
 //
 
-client.login(token)
+client.login(TOKEN)
 
 const express = require('express');
 const app = express();
