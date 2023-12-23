@@ -6,13 +6,19 @@ const { readdirSync } = require("fs")
 const moment = require("moment");
 const { REST } = require('@discordjs/rest');
 const { Routes } = require('discord-api-types/v10');
+const { prefix, owner } = require('./src/config');
+const { Player, RepeatMode } = require("discord-music-player");
 
 let token = process.env.token;
 
+const player = new Player(client, {
+  leaveOnEmpty: true, 
+});
 client.commands = new Collection()
 client.slashcommands = new Collection()
 client.commandaliases = new Collection()
 client.util = require('./util')
+client.player = player;
 
 const rest = new REST({ version: '10' }).setToken(token);
 
@@ -61,16 +67,23 @@ readdirSync('./src/events').forEach(async file => {
 	}
 })
 
-const {ask} = require('./util.js');
+/**
+ * Content
+ */
 
 client.on("messageCreate", msg => {
 
   if(msg.author.bot) return;
   if(msg.guild) {
     if(msg.content.startsWith(`<@${msg.client.user.id}>`) || msg.guild.channels.cache.get('1090823940148035694')) {
-      client.util.handleTalk(msg);
+      client.util.bedakherosin(msg);
     }
   }
+});
+
+client.on('messageCreate', msg => {
+  if(msg.author.bot) return;
+  let guildQueue = client.player.getQueue(message.guild.id);
 })
 
 //nodejs-events
@@ -97,44 +110,3 @@ app.get("/", (request, response) => {
 const listener = app.listen(5901, () => {
   console.log("Your app on port 69 sus");
 });
-
-/**
- *    aternos
- */
-const aternos = require('./src/worker/aternos.js');
-const Gamedig = require('gamedig');
-
-async function getGamedig(id) {
-  try {
-      let host;
-      if (!id || id[0] === '#') {
-          host = await aternos.getHostname(id);
-      }
-      else {
-          host = `${id}.aternos.me`;
-      }
-      return await Gamedig.query({ type: 'minecraft', host });
-  }
-  catch (error) {
-      return { error: error.message };
-  }
-}
-
-client.once('messageCreate', async (msg) => {
-  if(msg.author.bot) return;
-  if(msg.channel.type === 'dm') return;
-  if(!msg.content.startsWith(prefix)) return;
-  const args = message.content.slice(prefix.length).trim().split(/ +/g); 
-  const cmd = args.shift().toLowerCase();
-  if(cmd.length == 0 ) return;
-
-  switch(args) {
-    case "start":
-      aternos.start(args.id, args.wait)
-      .then(msg.reply("starting"))
-      .catch(console.error)
-      break;
-    case "stop":
-      break;
-  }
-})

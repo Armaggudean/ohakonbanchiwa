@@ -1,4 +1,4 @@
 module.exports = {
-  prefix: "hina",
+  prefix: ["hina", "h!"],
   owner: "690639157013381220",
 }

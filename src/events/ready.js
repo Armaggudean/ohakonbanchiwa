@@ -4,5 +4,5 @@ module.exports = {
 	once: true,
 	execute(client) {
     console.log(`Logged as ${client.user.tag}`);
-    client.user.setActivity('instagram: @asakinime', { type: ActivityType.Watching });
+    client.user.setActivity('Riel lagi mandi', { type: ActivityType.Watching });
 }};
