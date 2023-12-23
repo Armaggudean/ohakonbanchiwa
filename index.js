@@ -14,7 +14,6 @@ client.commands = new Collection()
 client.slashcommands = new Collection()
 client.commandaliases = new Collection()
 client.util = require('./util')
-client.player = player;
 
 const rest = new REST({ version: '10' }).setToken(TOKEN);
 
