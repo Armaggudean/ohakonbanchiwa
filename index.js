@@ -8,7 +8,7 @@ const { REST } = require('@discordjs/rest');
 const { Routes } = require('discord-api-types/v10');
 const { prefix, owner } = require('./src/config');
 
-let TOKEN = "NjY3NzU3MjI0MjM5ODI0OTAy.GMCpiS.BabBTETeVjpxyIJi60G5K5lDA0Luvkg88gH_to";
+let TOKEN = process.env.TOKEN;
 
 client.commands = new Collection()
 client.slashcommands = new Collection()
