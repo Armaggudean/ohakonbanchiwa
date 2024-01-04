@@ -7,7 +7,6 @@ module.exports = {
     cooldown: 5000,//1 sec = 1000 ms / 0 = no cd.
     run: async (client, message, args) => {
 
-        if(args[0].length !== 6 || !isNaN(args[0])) return;
         if(args[0].length === 6 || isNaN(args[0])) {
             const datalink = `https://skizo.tech/api/nhentai?code=${args[0]}&apikey=confutatis3000`;
 
